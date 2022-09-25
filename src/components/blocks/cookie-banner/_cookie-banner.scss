@@ -1,0 +1,81 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-cookie-banner {
+  background-color: base.sitecolors-siteColor("vam-white");
+  border-top: solid 2px base.sitecolors-siteColor("vam-grey-4");
+  bottom: 0;
+  padding-top: 8px;
+  position: fixed;
+  transition: transform 0.2s;
+  width: 100%;
+  z-index: 10;
+
+  &--hidden {
+    transform: translateY(100%);
+  }
+
+  &__content {
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+
+    &-text {
+      @include base.typography-typeSetting(2, "regular");
+
+      color: base.sitecolors-siteColor("vam-black");
+      display: inline-block;
+      height: 100%;
+      line-height: 24px;
+      margin: auto;
+      max-height: 68px;
+      max-width: 1200px;
+      overflow: auto;
+      padding-left: 10px;
+      width: calc(100% - 50px);
+
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(4, "regular");
+
+        padding-left: 65px;
+      }
+    }
+  }
+
+  &__close {
+    display: inline-block;
+    height: 100%;
+    width: 22px;
+
+    &-button {
+      border: none;
+      bottom: 10px;
+      cursor: pointer;
+      height: 18px;
+      position: absolute;
+      right: 8px;
+      width: 18px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        bottom: calc(50% - 10px);
+        height: 20px;
+        right: 18px;
+        width: 20px;
+      }
+    }
+
+    &-icon {
+      bottom: 0;
+      color: base.sitecolors-siteColor("vam-black");
+      height: 18px;
+      position: absolute;
+      right: 0;
+      width: 18px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}

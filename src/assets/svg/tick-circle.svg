@@ -1,0 +1,21 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <title>tick-circle</title>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <g fill-rule="evenodd" fill="currentColor" id="Membership-upsell-(mobile)">
+   <g stroke="null" id="Member-promo-Copy">
+    <g stroke="null" id="Group-6">
+     <g stroke="null" id="Group-5">
+      <g stroke="null" id="Group">
+       <path stroke="null" id="Combined-Shape" d="m49.833326,99.666653c-27.522184,0 -49.833326,-22.311142 -49.833326,-49.833326c0,-27.522184 22.311142,-49.833326 49.833326,-49.833326c27.522184,0 49.833326,22.311142 49.833326,49.833326c0,27.522184 -22.311142,49.833326 -49.833326,49.833326zm22.436722,-74.689251l-34.713719,31.586297l-10.159725,-9.244434l-7.891254,8.67264l18.050979,16.424771l42.604973,-38.766634l-7.891254,-8.67264z"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

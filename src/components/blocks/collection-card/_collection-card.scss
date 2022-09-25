@@ -1,0 +1,81 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-collection-card {
+  &__anchor {
+    &:focus {
+      box-shadow: none;
+      outline: 0;
+    }
+  }
+
+  &__media {
+    @include mixins.constrainedimage-constrainedImage(7 4);
+
+    .b-collection-card--transparent & {
+      box-shadow: 0 1px 2px 0 color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+    }
+  }
+
+  &__media-inner {
+    @include mixins.constrainedimage-constrainedImageInner;
+
+    overflow: hidden;
+  }
+
+  &__media-image {
+    @include mixins.constrainedimage-constrainedImageImage;
+
+    border-radius: 2px 2px 0 0;
+  }
+
+  &__overlay {
+    align-items: center;
+    background-color: color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+    border-radius: 2px 2px 0 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    transition: opacity 200ms;
+    z-index: 1;
+
+    .b-collection-card__anchor:focus & {
+      @include mixins.focus-defaultFocus;
+    }
+
+    .b-collection-card__anchor:hover &,
+    .b-collection-card__anchor:focus & {
+      opacity: 1;
+    }
+  }
+
+  &__overlay-text {
+    @include base.typography-typeSetting(3, "bold");
+
+    color: base.sitecolors-siteColor("vam-white");
+    text-shadow: 0 1px 2px color.scale(base.sitecolors-siteColor("vam-black"), $alpha: 50%);
+  }
+
+  &__name {
+    @include base.typography-typeSetting(4, "bold");
+
+    background-color: base.sitecolors-siteColor("vam-white");
+    border-radius: 0 0 2px 2px;
+    color: base.sitecolors-siteColor("vam-black");
+    min-height: 84px;
+    padding: 5px 10px;
+
+    .b-collection-card--transparent & {
+      background-color: transparent;
+      padding: 5px 0;
+    }
+  }
+}

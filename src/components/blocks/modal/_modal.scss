@@ -1,0 +1,142 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-modal {
+  background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.85);
+  bottom: 0;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  &--active {
+    animation: opacity-fade-in 1s;
+    display: block;
+  }
+
+  &__close {
+    display: inline-block;
+    height: 100%;
+    width: 22px;
+
+    &-button {
+      border: none;
+      bottom: 10px;
+      cursor: pointer;
+      height: 18px;
+      position: absolute;
+      right: 8px;
+      width: 18px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 20px;
+        right: 0;
+        top: -32px;
+        width: 20px;
+      }
+    }
+
+    &-icon {
+      bottom: 0;
+      color: base.sitecolors-siteColor("vam-white");
+      height: 18px;
+      position: absolute;
+      right: 0;
+      width: 18px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+
+  &__content {
+    background-color: base.sitecolors-siteColor("vam-white");
+    border-radius: 2px;
+    color: base.sitecolors-siteColor("vam-black");
+    left: 50%;
+    margin: auto;
+    max-width: 300px;
+    padding: 30px 20px 24px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width: 670px;
+      padding: 55px 65px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      max-width: 820px;
+    }
+
+    a,
+    &::after {
+      pointer-events: all;
+    }
+
+    &-license {
+      max-width: none;
+      padding: 10px;
+      width: 100%;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        max-width: 500px;
+        padding: 30px 20px 24px;
+      }
+
+      @include mixins.breakpoints-bpMinSmall {
+        max-width: 500px;
+        padding: 25px 35px;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: auto;
+        max-width: 670px;
+        min-height: 250px;
+      }
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(5, "bold");
+
+    color: base.sitecolors-siteColor("vam-black");
+    margin: 0 0 12px;
+    white-space: nowrap;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "regular");
+
+      margin: 0 0 14px;
+    }
+  }
+
+  &__description,
+  &__dismiss {
+    @include base.typography-typeSetting(1, "regular");
+
+    line-height: 1.35rem;
+    margin: 0 0 16px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "regular");
+
+      color: base.sitecolors-siteColor("vam-grey-2");
+      margin: 0 0 18px;
+    }
+  }
+
+  &__dismiss {
+    line-height: 1rem;
+    margin-top: 13px;
+  }
+}

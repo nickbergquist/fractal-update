@@ -1,0 +1,32 @@
+.u-link {
+  color: inherit;
+  text-decoration: underline;
+
+  &:hover {
+    color: inherit;
+  }
+
+  &--arrowed {
+    &::after {
+      border: 5px solid transparent;
+      border-left-color: currentColor;
+      content: "";
+      display: inline-block;
+      margin-left: 7px;
+    }
+  }
+
+  &--external-icon {
+    height: 16px;
+    margin-right: 2px;
+    position: relative;
+    top: 2px;
+    width: 16px;
+  }
+}
+
+@media print {
+  a[href]::after {
+    content: " (" attr(href) ") ";
+  }
+}

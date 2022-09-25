@@ -1,0 +1,205 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.b-event-feature {
+  box-sizing: border-box;
+  height: 344px;
+  margin: 0 10px 10px;
+  overflow: hidden;
+  position: relative;
+  width: calc(100% - 20px);
+
+  @include mixins.breakpoints-bpMinSmall {
+    height: 545px;
+    margin-bottom: 20px;
+    max-height: 545px;
+
+    &--half-width-fixed,
+    &--third-width:nth-of-type(n+2) {
+      float: left;
+      height: 400px;
+      width: calc(50% - 20px);
+    }
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    &--half-width {
+      float: left;
+      height: 400px;
+      width: calc(50% - 20px);
+    }
+
+    &--third-width:nth-of-type(n+0) {
+      float: left;
+      height: 400px;
+      width: calc(33.33% - 20px);
+    }
+  }
+
+  &__media {
+    height: 100%;
+    width: 100%;
+
+    &::after {
+      background-image: linear-gradient(rgba(0, 0, 0, 0%), rgba(0, 0, 0, 0%), rgba(0, 0, 0, 80%), rgba(0, 0, 0, 100%));
+      bottom: 0;
+      content: "";
+      display: block;
+      left: 0;
+      opacity: 0.8;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: opacity 0.35s ease;
+      width: 100%;
+      z-index: 0;
+
+      .b-event-feature__link:hover &,
+      .b-event-feature__link:focus & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__media-image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__content {
+    align-items: flex-start;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    left: 0;
+    margin: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    > .u-label-tag {
+      margin: 0;
+    }
+  }
+
+  &__info {
+    color: base.sitecolors-siteColor("vam-white");
+    text-shadow: 0 1px 2px color.scale(base.sitecolors-siteColor("vam-black"), $alpha: -50%);
+  }
+
+  &__type {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin: 0 0 6px;
+  }
+
+  &__name {
+    @include base.typography-typeSetting(5, "bold");
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
+
+      .b-event-feature--half-width-fixed &,
+      .b-event-feature--half-width:nth-of-type(n+2) &,
+      .b-event-feature--third-width:nth-of-type(n+2) & {
+        @include base.typography-typeSetting(5, "bold");
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      .b-event-feature--half-width:nth-of-type(1) &,
+      .b-event-feature--third-width:nth-of-type(1) & {
+        @include base.typography-typeSetting(5, "bold");
+      }
+    }
+  }
+
+  &__date {
+    @include base.typography-typeSetting(4);
+
+    margin: 6px 0 0;
+
+    &::before {
+      margin-left: 2px;
+    }
+
+    .b-event-feature__type & {
+      display: none;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      &::before {
+        margin-left: -1px;
+      }
+
+      .b-event-feature__type & {
+        display: inline-block;
+      }
+
+      .b-event-feature__name & {
+        display: none;
+      }
+
+      .b-event-feature--half-width-fixed &,
+      .b-event-feature--half-width:nth-of-type(n+2) &,
+      .b-event-feature--third-width:nth-of-type(n+2) & {
+        &::before {
+          margin-left: 2px;
+        }
+      }
+
+      .b-event-feature--half-width-fixed .b-event-feature__name & {
+        display: none;
+      }
+
+      .b-event-feature--half-width-fixed .b-event-feature__type &,
+      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__type &,
+      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__type & {
+        display: none;
+      }
+
+      .b-event-feature--half-width:nth-of-type(n+2) .b-event-feature__name &,
+      .b-event-feature--third-width:nth-of-type(n+2) .b-event-feature__name & {
+        display: block;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      .b-event-feature--half-width:nth-of-type(1) &,
+      .b-event-feature--third-width:nth-of-type(1) & {
+        @include base.typography-typeSetting(1, bold);
+
+        &::before {
+          margin-left: 2px;
+        }
+      }
+
+      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__type &,
+      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__type & {
+        display: none;
+      }
+
+      .b-event-feature--half-width:nth-of-type(1) .b-event-feature__name &,
+      .b-event-feature--third-width:nth-of-type(1) .b-event-feature__name & {
+        display: block;
+      }
+    }
+  }
+
+  &__cta {
+    margin: 10px 0 0;
+
+    > .u-btn {
+      margin-top: 0;
+
+      &:nth-child(n+2) {
+        @include mixins.breakpoints-bpMaxXSmall {
+          display: none;
+        }
+      }
+    }
+  }
+}

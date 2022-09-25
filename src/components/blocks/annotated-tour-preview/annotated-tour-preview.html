@@ -1,0 +1,19 @@
+<section class="b-annotated-tour-preview">
+  <div class="b-annotated-tour-preview__btn-container">
+    <a href="#" class="u-btn u-btn--outlined-inverse u-btn--arrowed b-annotated-tour-preview__btn">
+      Start Tour
+    </a>
+  </div>
+  <div class="b-annotated-tour-preview__content">
+    <div class="b-annotated-tour-preview__overlay-container">
+      <div class="b-annotated-tour-preview__overlay">
+      </div>
+    </div>
+      <img srcset="{{ image[320] }} 320w,
+                   {{ image[640] }} 640w,
+                   {{ image[960] }} 960w,
+                   {{ image[1200] }} 1200w"
+            sizes="(min-width: 1200px) 1200px"
+            alt="" class="b-annotated-tour-preview__image" src="{{ image[640] }}">
+    </div>
+</section>

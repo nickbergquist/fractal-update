@@ -1,0 +1,32 @@
+@use "../../mixins";
+@use "../../base";
+
+.u-tag {
+  @include base.typography-typeSetting(2);
+
+  appearance: none;
+  background-color: base.sitecolors-siteColor("vam-grey-2");
+  border-radius: 2px;
+  color: base.sitecolors-siteColor("vam-white");
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  outline: 0;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  transition: background-color 0.2s, color 0.2s;
+
+  @include mixins.breakpoints-bpMinLarge {
+    padding: 7px 15px;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &--active {
+    background-color: base.sitecolors-siteColor("primary-green");
+    color: base.sitecolors-siteColor("vam-black");
+  }
+}

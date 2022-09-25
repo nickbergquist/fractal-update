@@ -1,0 +1,121 @@
+<div class="b-event-teaser {% if isVenue %}b-event-teaser--venue{% endif %}" itemscope itemprop="{% if not isVenue %}event{% else %}place{% endif %}" itemtype="http://schema.org/{% if not isVenue %}Event{% else %}Place{% endif %}">
+
+  <a class="b-event-teaser__link" itemprop="url" content="{{ eventUrl }}" href="{{ eventUrl }}">
+
+    {% if eventTag %}
+    {%- render "@label-tag--book-soon" -%}
+    {% endif %}
+
+    <div class="b-event-teaser__media js-object-fit-container">
+      <img alt="{{ eventTitle }}"
+           class="b-event-teaser__media-image"
+           itemprop="image"
+           sizes="(max-width: 499px) calc(100vw - 20px),
+                  (min-width: 500px) calc(50vw - 40px),
+                  (min-width: 992px) calc(33vw - 80px)"
+           srcset="{% for k, img in eventImage %}{{ img }} {{ k }}w{% if loop.last == false %}, {% endif %}{% endfor %}"
+           src="{{ eventImage[640] }}">
+
+      {% if eventSponsorText %}
+      <div class="b-event-teaser__sponsor" itemprop="sponsor" itemtype="http://schema.org/Organization">
+        <span itemprop="name">
+          {{ eventSponsorText }}
+        </span>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="b-event-teaser__description">
+      {% if not isVenue %}
+        <span itemprop="description" content="{{ eventDescription }}"></span>
+        <span itemprop="location" itemscope itemtype="http://schema.org/Place">
+          <span itemprop="name" content="Victoria and Albert Museum"></span>
+          <span itemprop="address" content="Victoria and Albert Museum, Cromwell Road, London SW7 2RL, UK"></span>
+        </span>
+      {% endif %}
+
+      {% if not isVenue %}
+      <div class="b-event-teaser__venue">
+        V&A South Kensington
+      </div>
+
+      <div class="b-event-teaser__title-container">
+        <h2 class="b-event-teaser__title {% if isVenue %}b-event-teaser__title--venue{% endif %}" aria-label="{{ eventTitle }}" itemprop="name" content="{{ eventTitle }}">
+          {{ eventTitle }}
+        </h2>
+      </div>
+      {% endif %}
+
+      {% if isVenue %}
+      <div class="b-event-teaser__title-container">
+        <h2 class="b-event-teaser__title b-event-teaser__title--venue" aria-label="Pink Floyd: Their Mortal Remains" itemprop="name" content="Pink Floyd: Their Mortal Remains">
+            Test Venue #02
+        </h2>
+        <svg class="b-event-teaser__title-icon"><use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#link-external"></use></svg>
+      </div>
+
+      <p class="b-event-teaser__description--venue" itemprop="description" content="{{ eventDescription }}">
+        {{ eventDescription }}
+      </p>
+
+      <ul class='b-icon-list'>
+        {% if address %}
+          <li class='b-icon-list__item'>
+            <svg role="presentation" class="b-icon-list__icon">
+                <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#map"></use>
+            </svg>
+            <div class="b-icon-list__content">
+                <div itemprop="address" class="b-icon-list__heading">{{ address }}</div>
+            </div>
+          </li>
+        {% endif %}
+        {% if admission_info %}
+          <li class='b-icon-list__item'>
+            <svg role="presentation" class="b-icon-list__icon">
+                <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#clock"></use>
+            </svg>
+            <div class="b-icon-list__content" itemprop="openingHoursSpecification" itemscope itemtype="http://schema.org/OpeningHoursSpecification">
+              <div itemprop="description" class="b-icon-list__heading">{{ admission_info|safe }}</div>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+
+      {% if eventPrice %}
+      <div class="b-event-teaser__data">
+        <div class="b-event-teaser__type">
+          <div>{{ eventType }}</div>
+          <div class="s-separated" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="priceCurrency" content="GBP"/>
+            <span itemprop="price" value="{{ eventPrice }}">{{ eventPrice }}</span>
+          </div>
+        </div>
+        <div class="b-event-teaser__date">
+          <meta itemprop="startDate" content="{{ eventMachineStartDate }}"/>
+          <meta itemprop="endDate" content="{{ eventMachineEndDate }}"/>
+          {{ eventHumanDates }}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </a>
+
+  {% if not isVenue %}
+    <div class="b-event-teaser__footer">
+      {% for action in actions %}
+      <a class="u-btn u-btn--micro u-btn--outlined" href="#">{{ action }}</a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if isVenue %}
+    <ul class="b-event-teaser__footer">
+      {% for action in actions %}
+      <li>
+        <a class="u-btn u-btn--micro u-btn--outlined" href="#">{{ action }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

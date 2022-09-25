@@ -1,0 +1,124 @@
+@use "../../mixins";
+@use "../../base";
+@use "sass:color";
+
+.u-btn {
+  @include base.typography-typeSetting(4);
+
+  appearance: none;
+  background-color: base.sitecolors-siteColor("primary-green");
+  border: 1px solid base.sitecolors-siteColor("primary-green");
+  border-radius: 2px;
+  color: base.sitecolors-siteColor("vam-black");
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  padding: 10px 19px 8px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  transition: border 0.2s, background-color 0.2s, color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
+    border-color: color.scale(base.sitecolors-siteColor("primary-green"), $lightness: -10%);
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include mixins.focus-defaultFocus;
+  }
+
+  .sir-trevor-text & {
+    text-decoration: none;
+  }
+
+  &--arrowed {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+
+    &::after {
+      border: 5px solid transparent;
+      border-left-color: currentColor;
+      content: "";
+      display: block;
+      margin: 0 0 -1px 7px;
+    }
+  }
+
+  &--black {
+    background-color: base.sitecolors-siteColor("vam-black");
+    border: 1px solid base.sitecolors-siteColor("vam-black");
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+      border: 1px solid color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+    }
+  }
+
+  &--white {
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: base.sitecolors-siteColor("vam-black");
+
+    &:hover,
+    &:focus {
+      background-color: color.scale(#fff, $lightness: -10%);
+      border: 1px solid color.scale(#fff, $lightness: -10%);
+    }
+  }
+
+  &--micro {
+    @include base.typography-typeSetting(3);
+
+    padding: 4px 10px;
+
+    &.u-btn--arrowed {
+      padding-right: 5px;
+    }
+  }
+
+  &--outlined {
+    background-color: #fff;
+    border-color: base.sitecolors-siteColor("vam-grey-4");
+    color: base.sitecolors-siteColor("vam-black");
+
+    &:hover,
+    &:focus {
+      background-color: color.scale(#fff, $lightness: -10%);
+      border-color: base.sitecolors-siteColor("vam-grey-4");
+    }
+  }
+
+  &--outlined-inverse {
+    background-color: base.sitecolors-siteColor("vam-black");
+    border-color: #fff;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: color.scale(base.sitecolors-siteColor("vam-black"), $lightness: 20%);
+      border-color: #fff;
+    }
+  }
+
+  &--stop {
+    align-items: center;
+    border-radius: 8px;
+    display: inline-flex;
+    justify-content: center;
+
+    &::after {
+      background-color: currentColor;
+      content: "";
+      display: block;
+      height: 8px;
+      margin: 0 0 -1px 7px;
+      width: 8px;
+    }
+  }
+}

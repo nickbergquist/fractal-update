@@ -1,0 +1,45 @@
+{
+  "name": "vam-fractal",
+  "version": "2.0.0",
+  "description": "Visual Style Guide for V&A websites",
+  "dependencies": {
+    "@frctl/fractal": "^1.5.14",
+    "@frctl/nunjucks": "^2.0.14",
+    "browser-cookies": "^1.2.0",
+    "openseadragon": "^3.1.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development concurrently 'node ./fractal-server.js' 'npm run build-dev:webpack'",
+    "build": "NODE_ENV=production concurrently 'npm run build:fractal' 'npm run build-prod:webpack'",
+    "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
+    "build-prod:webpack": "webpack --config ./webpack.prod.js",
+    "build:fractal": "fractal build"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "concurrently": "^7.3.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.16",
+    "postcss-bem-linter": "^3.3.0",
+    "postcss-loader": "^7.0.1",
+    "postcss-preset-env": "^7.7.2",
+    "sass": "^1.54.3",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.11.0",
+    "stylelint-config-standard-scss": "^5.0.0",
+    "stylelint-webpack-plugin": "^3.3.0",
+    "svg-sprite-loader": "^6.0.11",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-merge": "^5.8.0"
+  }
+}
