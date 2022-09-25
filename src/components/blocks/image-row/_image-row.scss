@@ -1,0 +1,39 @@
+@use "../../mixins";
+
+.b-image-row {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  &__item {
+    display: flex;
+
+    &--failed {
+      flex-grow: 1;
+
+      @include mixins.breakpoints-bpMaxSmall {
+        flex-basis: 20%;
+      }
+    }
+  }
+
+  &--padded > &__item {
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 6px;
+    }
+  }
+
+  &__item:last-child:nth-child(odd) {
+    @include mixins.breakpoints-bpMaxSmall {
+      height: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__img {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}
