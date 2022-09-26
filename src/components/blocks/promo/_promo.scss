@@ -1,0 +1,222 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-promo {
+  color: base.sitecolors-siteColor("vam-white");
+  display: flex;
+  flex-wrap: wrap;
+  margin: 12px 0;
+
+  &__item {
+    background-position: center center;
+    background-size: cover;
+    min-height: 250px;
+    padding: base.$spacings-spacing-small;
+    position: relative;
+    width: 100%;
+
+    .b-promo--no-min-height & {
+      min-height: auto;
+    }
+
+    .b-promo--big & {
+      height: 285px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 480px;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 560px;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      min-height: 300px;
+      width: 50%;
+    }
+
+    &:last-of-type:nth-of-type(odd) {
+      width: 100%;
+    }
+  }
+
+  &__image {
+    display: block;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &__content {
+    align-items: center;
+    color: base.sitecolors-siteColor("vam-grey-6");
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    margin: auto;
+    max-width: 470px;
+    min-height: 230px;
+    padding: base.$spacings-spacing-small;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 2px base.sitecolors-siteColor("vam-black"), 0 -1px 2px base.sitecolors-siteColor("vam-black");
+    z-index: 1;
+
+    &--newsletter {
+      max-width: none;
+      padding: 0;
+    }
+
+    .b-promo--no-min-height & {
+      min-height: auto;
+    }
+
+    .b-promo--white & {
+      color: base.sitecolors-siteColor("vam-black");
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width: 670px;
+
+      &--newsletter {
+        max-width: none;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      max-width: 800px;
+      min-height: 280px;
+
+      &--newsletter {
+        max-width: none;
+      }
+    }
+
+    > .b-icon-badge {
+      pointer-events: none;
+    }
+  }
+
+  &__anchor {
+    background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.5);
+    display: block;
+    height: 100%;
+    position: relative;
+    transition: background-color 0.3s;
+
+    &:focus .u-btn {
+      @include mixins.focus-defaultFocus;
+    }
+
+    &:focus .b-icon-badge {
+      @include mixins.focus-defaultFocus;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.6);
+      box-shadow: none;
+    }
+
+    .b-promo--white & {
+      background-color: transparent;
+      background-image: none;
+
+      &::after {
+        background-image:
+          linear-gradient(
+            rgba(base.sitecolors-siteColor("vam-white"), 0),
+            rgba(base.sitecolors-siteColor("vam-black"), 0.5)
+          );
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.3s;
+        width: 100%;
+      }
+
+      &:hover::after,
+      &:focus::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__type {
+    @include base.typography-typeSetting(3, "bold");
+
+    margin: 0;
+
+    .b-promo--white & {
+      text-shadow: none;
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin: base.$spacings-spacing-small 0;
+    text-align: center;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      @include base.typography-typeSetting(5, "bold");
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      @include base.typography-typeSetting(6, "bold");
+    }
+
+    .b-promo--white & {
+      text-shadow: 1px 0 2px base.sitecolors-siteColor("vam-white");
+    }
+  }
+
+  &__description {
+    @include base.typography-typeSetting(4, "bold");
+
+    width: 100%;
+
+    @include mixins.breakpoints-bpMaxSmall {
+      @include mixins.elementvisibility-visuallyHidden;
+    }
+  }
+
+  &__sponsor {
+    @include base.typography-typeSetting(1, "light");
+
+    margin: 0 0 20px;
+    width: 100%;
+  }
+
+  &__quote {
+    width: 100%;
+
+    &__body {
+      @include base.typography-typeSetting(2);
+
+      font-style: italic;
+      margin: 0;
+
+      &::before {
+        content: "\201C";
+      }
+
+      &::after {
+        content: "\201D";
+      }
+    }
+
+    &__citation {
+      @include base.typography-typeSetting(1);
+    }
+  }
+}

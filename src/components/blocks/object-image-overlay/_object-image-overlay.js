@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 const oicInit = () => {
   const oicSeeds = Array.from(document.querySelectorAll('.js-object-image-overlay-item'));
 
@@ -311,5 +310,3 @@ const oicInit = () => {
 };
 
 export default oicInit;
-
-/* eslint-enable no-underscore-dangle */

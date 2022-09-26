@@ -1,0 +1,182 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-membership-upsell {
+  left: 50%;
+  margin: auto;
+  max-width: 300px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  @include mixins.breakpoints-bpMinSmall {
+    max-width: 670px;
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    max-width: 820px;
+  }
+
+  &__button {
+    border: solid 1px #1d1e20;
+    height: 56px;
+    padding: 19px;
+    width: 210px;
+
+    &::after {
+      right: 10px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        right: 35px;
+      }
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      width: 256px;
+    }
+  }
+
+  &__content {
+    margin: 20px;
+    max-width: 260px;
+    position: absolute;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 55px;
+      max-width: 450px;
+    }
+  }
+
+  &__description {
+    @include base.typography-typeSetting(1, "normal");
+
+    color: base.sitecolors-siteColor("vam-black");
+    margin-bottom: 40px;
+    max-width: 264px;
+    text-align: left;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(4, "normal");
+
+      color: base.sitecolors-siteColor("vam-grey-2");
+      margin-bottom: 30px;
+      max-width: 360px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: none;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin-bottom: 22px;
+    margin-left: 20px;
+    max-width: 220px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      max-width: 100%;
+    }
+
+    &--item {
+      @include base.typography-typeSetting(2, "normal");
+
+      color: base.sitecolors-siteColor("vam-black");
+      margin-bottom: 12px;
+      margin-left: 6px;
+
+      &-point {
+        float: left;
+        height: 17px;
+        left: 0;
+        position: absolute;
+        width: 17px;
+      }
+    }
+  }
+
+  &__navigation {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14px;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-top: 35px;
+      width: 300px;
+    }
+
+    &--button {
+      height: 62px;
+      line-height: 30px;
+      margin: auto;
+      max-width: 245px;
+      padding: 15px;
+      width: 100%;
+
+      @include mixins.breakpoints-bpMinSmall {
+        max-width: 300px;
+      }
+
+      &::after {
+        right: 10px;
+
+        @include mixins.breakpoints-bpMinSmall {
+          right: 40px;
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.5);
+    bottom: 0;
+    cursor: pointer;
+    display: table;
+    height: 100%;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  &__promo {
+    background-color: base.sitecolors-siteColor("vam-white");
+    background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background_mobile.png");
+    background-position: 120px 50px;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    height: 470px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      background-image: url("https://vanda-production-assets.s3.amazonaws.com/static/membership/Membership_popup_background.png");
+      background-position: 450px 60px;
+      background-size: 315px;
+      height: 500px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      background-position: 500px 22px;
+      background-size: 340px;
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(6, "normal");
+
+    color: base.sitecolors-siteColor("vam-black");
+    white-space: nowrap;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(7, "normal");
+    }
+  }
+}

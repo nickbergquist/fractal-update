@@ -1,0 +1,459 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-facet-box {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  background-color: rgba(base.sitecolors-siteColor("vam-black"), 0.92);
+  color: siteColor("vam-white");
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &__instruction {
+    height: 1px;
+    left: -2px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 1px;
+  }
+
+  &--active {
+    display: block;
+    overflow-y: auto;
+    z-index: 9999;
+
+    @include mixins.breakpoints-bpMinMedium {
+      z-index: 0;
+    }
+  }
+
+  @include mixins.breakpoints-bpMinMedium {
+    background-color: transparent;
+    display: block;
+    opacity: 1;
+    position: relative;
+    width: 270px;
+  }
+
+  &__hidden-input {
+    display: none;
+  }
+
+  &__modal-button {
+    @include mixins.breakpoints-bpMinMedium {
+      display: none;
+    }
+
+    background-color: transparent;
+    border-color: base.themecolors-themeColor("silent-green");
+    color: base.sitecolors-siteColor("vam-white");
+    display: block;
+    padding-right: 36px;
+    position: relative;
+
+    &:hover {
+      background-color: base.themecolors-themeColor("silent-green");
+      border-color: base.themecolors-themeColor("silent-green");
+      color: base.sitecolors-siteColor("vam-black");
+    }
+
+    &-close {
+      border: 0.7px solid base.themecolors-themeColor("silent-green");
+      border-radius: 19.5px;
+      color: base.sitecolors-siteColor("vam-white");
+      font-size: 36px;
+      height: 40px;
+      position: relative;
+      width: 40px;
+    }
+  }
+
+  &__modal-content {
+    &-close {
+      color: base.sitecolors-siteColor("vam-white");
+      height: 19px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 18px;
+    }
+
+    &-open {
+      height: 34px;
+      margin-top: -1px;
+      width: 30px;
+    }
+
+    .b-facet-box__modal-button:hover & {
+      color: base.sitecolors-siteColor("vam-white");
+      filter: invert(100%);
+    }
+
+    color: base.themecolors-themeColor("silent-green");
+    left: calc(100% - 34px);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__modal {
+    &-container {
+      @include mixins.breakpoints-bpMinMedium {
+        display: none;
+      }
+
+      &--close {
+        @include mixins.breakpoints-bpMinMedium {
+          display: none;
+        }
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+
+      padding-right: 20px;
+      padding-top: 20px;
+      text-align: right;
+    }
+  }
+
+  &__facet {
+    &:nth-of-type(1) {
+      margin-top: 0;
+    }
+
+    border-radius: 2px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+    &-date-start-container,
+    &-date-end-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-text {
+      @include base.typography-typeSetting(3, "bold");
+
+      &:hover {
+        background-color: base.sitecolors-siteColor("vam-grey-1");
+        cursor: pointer;
+      }
+
+      color: base.sitecolors-siteColor("vam-white");
+      padding: 10px;
+      position: relative;
+      text-align: left;
+      width: 100%;
+
+      &::after {
+        @include base.typography-typeSetting(6, "light");
+
+        content: "+";
+        display: inline-block;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &--active {
+        background-color: base.sitecolors-siteColor("vam-grey-1");
+        padding-bottom: 1px;
+
+        &::after {
+          @include base.typography-typeSetting(8, "light");
+
+          background-color: base.sitecolors-siteColor("vam-white");
+          content: " ";
+          height: 2px;
+          width: 12px;
+        }
+      }
+    }
+
+    &-container {
+      @include mixins.breakpoints-bpMinMedium {
+        margin-top: 0;
+        padding: 0;
+      }
+
+      margin: auto;
+      margin-top: 37px;
+      max-width: 530px;
+      padding: 0 20px;
+    }
+
+    &-date {
+      &-container {
+        display: flex;
+        flex-flow: nowrap;
+        max-width: 270px;
+        padding-bottom: 10px;
+
+        @include mixins.breakpoints-bpMinXSmall {
+          max-width: none;
+        }
+
+        &-start,
+        &-end {
+          flex-basis: 30%;
+          margin-right: 8px;
+
+          @include mixins.breakpoints-bpMinXSmall {
+            flex-basis: 30%;
+          }
+        }
+
+        &-button {
+          flex-basis: 10%;
+        }
+
+        &-start,
+        &-end,
+        &-button {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      &-button {
+        background-color: #ceffd6;
+        border-radius: 2px;
+        height: 44px;
+        position: relative;
+        width: 44px;
+
+        &-icon {
+          color: base.sitecolors-siteColor("vam-black");
+          height: 100%;
+          left: 50%;
+          padding: 10px;
+          position: absolute;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+        }
+      }
+
+      &-input {
+        background-color: base.sitecolors-siteColor("vam-white");
+        border: solid 1px #979797;
+        border-radius: 2px;
+        font-size: 18px;
+        height: 44px;
+        padding-left: 10px;
+        width: 95px;
+
+        &--error {
+          border-color: base.sitecolors-siteColor("alert-red");
+        }
+      }
+    }
+
+    &-term-container {
+      background-color: base.sitecolors-siteColor("vam-grey-1");
+      display: none;
+      flex-direction: row;
+      list-style: none;
+      margin-left: 0;
+      padding: 10px;
+      width: 100%;
+
+      &-text {
+        @include base.typography-typeSetting(2, "light");
+
+        padding-bottom: 10px;
+
+        &--warning {
+          color: base.sitecolors-siteColor("vam-white");
+          padding-bottom: 0;
+        }
+
+        &[disabled] {
+          display: none;
+        }
+      }
+
+      &--active {
+        display: inline-flex;
+        flex-flow: wrap;
+      }
+    }
+
+    &-term-toggle {
+      &:hover {
+        color: base.sitecolors-siteColor("vam-white");
+      }
+
+      color: base.sitecolors-siteColor("vam-grey-5");
+      cursor: pointer;
+      display: flex;
+      flex-basis: 100%;
+      flex-direction: row;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      position: relative;
+
+      &-text {
+        @include mixins.breakpoints-bpMinMedium {
+          max-width: 167px;
+        }
+
+        flex-grow: 1;
+        text-align: left;
+      }
+
+      &-tick use {
+        display: none;
+      }
+
+      &-tick {
+        border: 1px base.sitecolors-siteColor("vam-white") solid;
+        border-radius: 3px;
+
+        &--active {
+          background-color: base.themecolors-themeColor("silent-green");
+          border-color: base.themecolors-themeColor("silent-green");
+        }
+
+        &--active use {
+          display: block;
+        }
+
+        color: base.sitecolors-siteColor("vam-black");
+        height: 25px;
+        left: 0;
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+      }
+
+      &-button {
+        align-items: center;
+        display: flex;
+        user-select: text;
+        width: 100%;
+      }
+
+      &-checkbox {
+        margin-left: 40px;
+
+        &::before {
+          content: "";
+          cursor: pointer;
+          height: 25px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 25px;
+        }
+      }
+
+      &-result {
+        flex-shrink: 1;
+        padding-left: 10px;
+        text-align: right;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &__term {
+    &-more {
+      cursor: pointer;
+      font-weight: 700;
+      margin: 10px 0;
+      text-decoration: underline;
+    }
+
+    @include base.typography-typeSetting(3, "light");
+
+    border: solid base.themecolors-themeColor("silent-green") 1px;
+    border-radius: 4px;
+    color: base.sitecolors-siteColor("vam-white");
+    margin-bottom: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 10px 33px 10px 13px;
+    position: relative;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &--form {
+      @include mixins.breakpoints-bpMinXSmall {
+        display: block;
+      }
+
+      border: solid base.sitecolors-siteColor("vam-black") 1px;
+      color: base.sitecolors-siteColor("vam-black");
+      display: none;
+      width: fit-content;
+
+      &-revealer {
+        display: block;
+        padding-right: 13px;
+      }
+    }
+
+    &:hover {
+      background-color: base.sitecolors-siteColor("vam-grey-5");
+      color: base.sitecolors-siteColor("vam-grey-1");
+      cursor: pointer;
+    }
+
+    &--mobile {
+      &:hover {
+        background-color: base.themecolors-themeColor("silent-green");
+      }
+    }
+
+    // this button/container gets reused a lot of places...I should really make
+    // this a mixin... see also controlled vocab
+
+    &-text {
+      &::after {
+        content: "\2715";
+        display: inline-block;
+        font-size: 14px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &--no-cross {
+        font-weight: 800;
+        text-decoration: underline;
+
+        &::after {
+          content: "";
+        }
+      }
+    }
+
+    &-list {
+      @include mixins.breakpoints-bpMinMedium {
+        display: none;
+        margin-top: 15px;
+      }
+
+      display: flex;
+      flex: auto;
+      flex-flow: row wrap;
+      margin: auto;
+      max-width: 530px;
+      padding: 40px 20px 0;
+    }
+  }
+}

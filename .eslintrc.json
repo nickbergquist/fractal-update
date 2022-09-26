@@ -6,5 +6,19 @@
   "parserOptions": { 
     "requireConfigFile" : false
   },
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": "off",
+    "prefer-destructuring": ["error", 
+      {
+        "object": false, 
+        "array": false
+      }
+    ],
+    "no-param-reassign": ["error", 
+      { 
+        "props": false 
+      }
+    ]
+  }
 }

@@ -1,0 +1,35 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-section-header {
+  background: base.sitecolors-siteColor("vam-white");
+  padding: 21px base.$spacings-spacing-small 25px;
+
+  @include mixins.breakpoints-bpMinXSmall {
+    padding: 28px base.$spacings-spacing-small 32px;
+  }
+
+  @include mixins.breakpoints-bpMinSmall {
+    padding: 47px base.$spacings-spacing-small base.$spacings-spacing-medium;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  &__title {
+    @include base.typography-typeSetting(5, "bold");
+
+    color: base.sitecolors-siteColor("vam-black");
+    display: block;
+    text-align: center;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
+    }
+
+    .b-section-header--transparent & {
+      color: base.sitecolors-siteColor("vam-white");
+    }
+  }
+}

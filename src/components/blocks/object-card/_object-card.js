@@ -1,6 +1,5 @@
 export default (() => {
   Array.from(document.querySelectorAll('.b-object-card__warning'), (card) => {
-    // eslint-disable-next-line no-param-reassign
     card.innerHTML = `
       <div class="b-object-card__warning__banner">
         <div class="b-object-card__warning__banner__text">

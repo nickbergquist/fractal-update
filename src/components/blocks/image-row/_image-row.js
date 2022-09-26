@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Array.from(imgRows, (imgRow) => {
       rowId += 1;
       imgRow.classList.add(`b-image-row-${rowId}`);
-      imgRow._imageRowId = rowId; // eslint-disable-line no-param-reassign, no-underscore-dangle
+      imgRow._imageRowId = rowId;
 
       /* use a style tag so we have media-queries */
       const imgRowStyle = imgRow.parentNode.insertBefore(document.createElement('style'), imgRow);
@@ -33,18 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
             /* apply the same height calculation for mobile as the general rule below,
              * but in batches of 2 images, and with rounding and a tiny reduction to
              * ensure no pair is wider than a wrapped row */
-            /* eslint-disable no-underscore-dangle */
             imgRowStyleMobile += `
               .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId - 1}), 
               .b-image-row-${parentRow._imageRowId} .b-image-row__item:nth-child(${imgId}) {
                 height: ${Math.round((rowWidth / (aspectRatios[imgId - 2] + aspectRatios[imgId - 1])) - 1.5)}px;
               }
             `;
-            /* eslint-enable no-underscore-dangle */
           }
           return true;
         });
-        /* eslint-disable no-underscore-dangle */
         imgRowStyle.innerHTML = `
           @media screen and (max-width: 768px) {
             .b-image-row-${parentRow._imageRowId} { 
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             height: ${rowWidth / aspectRatios.reduce((a, b) => a + b)}px;
           }
         `;
-        /* eslint-enable no-underscore-dangle */
       };
 
       const imgs = imgRow.querySelectorAll('.b-image-row__img');

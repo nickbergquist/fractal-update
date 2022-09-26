@@ -1,0 +1,22 @@
+<div class="b-pagination">
+  <div class="b-pagination__pointer b-pagination__pointer--deactivated">
+    <svg role="img" class="b-pagination__pointer-arrow">
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
+    </svg>
+  </div>
+  <ul class="b-pagination__options">
+    <li class="b-pagination__option">
+      <span class="b-pagination__option-content--active">{{currentPage}}</span>
+    </li>
+    {% for page in pages %}
+      <li class="b-pagination__option">
+        <a class="b-pagination__option-content" href={{link}}>{{page}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a class="b-pagination__pointer" href={{link}}>
+    <svg role="img" class="b-pagination__pointer-arrow">
+      <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
+    </svg>
+  </a>
+</div>
