@@ -13,6 +13,10 @@ require('../../components/blocks/object-shuffler/_object-shuffler');
 require('../../components/blocks/modal/_modal');
 require('../../components/blocks/newsletter-signup/_newsletter-signup');
 require('../../components/blocks/search-form/_search-form');
+require('../../components/blocks/search-result/_search-result');
+require('../../components/blocks/search-results/_search-results');
+require('../../components/blocks/site-nav/_site-nav');
+require('../../components/groups/facet-box-modal/_facet-box-modal');
 
 contentWarningsInit();
 oicInit();

@@ -1,0 +1,17 @@
+@use "../../mixins";
+
+.b-facet-box-modal {
+  &__container {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
