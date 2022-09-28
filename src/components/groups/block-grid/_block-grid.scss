@@ -1,0 +1,90 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-block-grid {
+  margin: 12px 0;
+
+  &--padded {
+    overflow: hidden;
+    padding: 0 0 38px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      padding: 0 22px 38px;
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      padding: 0 54px 54px;
+    }
+  }
+
+  &__header {
+    color: base.sitecolors-siteColor("vam-white");
+    margin: 50px 0 20px;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 70px 0 30px;
+    }
+
+    &--black {
+      color: base.sitecolors-siteColor("vam-black");
+    }
+
+    &--transparent {
+      background-color: transparent;
+    }
+  }
+
+  // this is required to differentiate from b-block-grid__header being used outside of a b-block-grid,
+  // as it is in places - in those cases it gets the default margins defined above
+  > #{&}__header {
+    margin: 40px 0 50px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin: 50px 0 70px;
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(5, "bold");
+
+    text-align: center;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__footer {
+    background-color: base.sitecolors-siteColor("vam-black");
+    clear: both;
+    padding: base.$spacings-spacing-small * 2;
+
+    &--light {
+      background-color: base.sitecolors-siteColor("vam-white");
+    }
+
+    > a:focus {
+      box-shadow: none;
+
+      .b-icon-badge__icon {
+        @include mixins.focus-defaultFocus;
+      }
+    }
+
+    > svg {
+      color: base.sitecolors-siteColor("vam-black");
+    }
+  }
+
+  &__cols-restarter {
+    column-span: all !important;
+    height: 0 !important;
+    padding: 0 !important;
+  }
+}

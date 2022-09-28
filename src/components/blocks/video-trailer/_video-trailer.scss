@@ -1,0 +1,95 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-video-trailer {
+  background-color: base.sitecolors-siteColor("vam-white");
+  overflow: hidden;
+  padding: 0 10px;
+
+  @include mixins.breakpoints-bpMinSmall {
+    padding: 0 40px 60px;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    overflow: initial;
+  }
+
+  &__content {
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+
+    .b-video-trailer__link:focus & {
+      @include mixins.focus-defaultFocus;
+    }
+  }
+
+  &__link {
+    height: 100%;
+    width: 100%;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__header {
+    margin-bottom: 20px;
+    margin-top: 12px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      margin-bottom: 50px;
+      margin-top: 0;
+    }
+
+    &-title {
+      @include base.typography-typeSetting(5, "bold");
+
+      margin: auto;
+      text-align: center;
+
+      @include mixins.breakpoints-bpMinSmall {
+        @include base.typography-typeSetting(6, "bold");
+      }
+    }
+  }
+
+  &__icon {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    position: absolute;
+    top: 50%;
+    width: 60px;
+
+    @include mixins.breakpoints-bpMinSmall {
+      height: 80px;
+      margin-left: -40px;
+      margin-top: -40px;
+      width: 80px;
+    }
+
+    &-arrow {
+      height: 20px;
+      margin-left: 22px;
+      margin-top: 20px;
+      width: 20px;
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 26px;
+        margin-left: 29px;
+        margin-top: 27px;
+        width: 26px;
+      }
+    }
+  }
+}
