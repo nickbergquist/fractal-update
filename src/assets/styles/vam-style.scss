@@ -48,8 +48,15 @@
 @use "../../components/blocks/top-header-bar/top-header-bar";
 @use "../../components/blocks/venue-card/venue-card";
 @use "../../components/blocks/video-thumbnail/video-thumbnail";
-@use "../../components/blocks/video-trailer/_video-trailer";
+@use "../../components/blocks/video-trailer/video-trailer";
+@use "../../components/blocks/search-pagination/search-pagination";
+@use "../../components/blocks/shop-tout/shop-tout";
+@use "../../components/blocks/story-box/story-box";
 @use "../../components/blocks/facet-box/facet-box";
+@use "../../components/blocks/content-warning/content-warning";
+@use "../../components/blocks/beta-tag/beta-tag";
+@use "../../components/blocks/venue-blog-card/venue-blog-card";
+@use "../../components/blocks/venue-core-info/venue-core-info";
 
 // Groups
 @use "../../components/groups/block-grid/block-grid";

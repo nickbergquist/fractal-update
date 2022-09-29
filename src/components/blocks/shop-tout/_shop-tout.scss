@@ -1,0 +1,84 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-shop-touts {
+  background-color: white;
+  overflow: hidden;
+  padding-bottom: 50px;
+
+  @include mixins.breakpoints-bpMinSmall {
+    padding: 0 30px 50px;
+  }
+
+  &__container {
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      align-items: stretch;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__item {
+    color: base.sitecolors-siteColor("vam-black");
+    padding: 0 10px 40px;
+    width: 100%;
+
+    @include mixins.breakpoints-bpMinXSmall {
+      flex: 0 0 50%;
+      padding: 1px 15px 50px;
+    }
+
+    @include mixins.breakpoints-bpMinSmall {
+      flex: 0 0 33.3333%;
+    }
+
+    > a:hover h2 {
+      text-decoration: underline;
+    }
+
+    > a > img {
+      height: 355px;
+      object-fit: contain;
+      width: 100%;
+
+      @include mixins.breakpoints-bpMinXSmall {
+        height: 235px;
+      }
+
+      @include mixins.breakpoints-bpMinSmall {
+        height: 199px;
+      }
+
+      @include mixins.breakpoints-bpMinMedium {
+        height: 274px;
+      }
+
+      @include mixins.breakpoints-bpMinLarge {
+        height: 366px;
+      }
+    }
+  }
+
+  &__title {
+    @include base.typography-typeSetting(4, "bold");
+
+    margin: 12px 0 5px;
+  }
+
+  &__description {
+    @include base.typography-typeSetting(3);
+
+    color: base.sitecolors-siteColor("vam-black");
+    margin: 0;
+  }
+
+  &__footer {
+    text-align: center;
+  }
+}
