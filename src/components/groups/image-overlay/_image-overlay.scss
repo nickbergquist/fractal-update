@@ -16,9 +16,11 @@
       cursor: auto;
     }
 
+    /* stylelint-disable selector-max-id, declaration-no-important */
     &--hidden {
-      display: none !important; /* stylelint-disable-line declaration-no-important */
+      display: none !important;
     }
+    /* stylelint-enable selector-max-id, declaration-no-important */
 
     &-image {
       height: 100%;

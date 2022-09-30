@@ -1,0 +1,77 @@
+@use "../../mixins";
+@use "../../base";
+
+.g-venue-card-grid {
+  margin-bottom: 40px;
+  width: 100%;
+
+  &__header {
+    @include base.typography-typeSetting(5, "bold");
+
+    color: #fff;
+    margin-bottom: 18px;
+    text-align: center;
+
+    @include mixins.breakpoints-bpMinSmall {
+      @include base.typography-typeSetting(6, "bold");
+
+      margin-bottom: 23px;
+    }
+  }
+
+  &__grid {
+    @include mixins.breakpoints-bpMinXSmall {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+
+    & > .b-venue-card {
+      aspect-ratio: 5 / 3;
+    }
+
+    @include mixins.breakpoints-bpMinXSmall {
+      flex: 0 1 calc((100% - 20px) * 5 / 11);
+
+      &:nth-child(n+2) {
+        margin-left: 10px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        flex-basis: calc((100% - 20px) * 3 / 11);
+
+        & > .b-venue-card {
+          aspect-ratio: 3 / 5;
+        }
+      }
+
+      &:nth-child(n):nth-child(4) {
+        margin-left: calc((100% * 2 / 11) - 5px);
+
+        & > .b-venue-card {
+          margin-top: calc(-100% * 2 / 3);
+        }
+      }
+    }
+
+    @include mixins.breakpoints-bpMinMedium {
+      flex: 0 1 calc((100% - 40px) * 5 / 11);
+      margin-bottom: 20px;
+
+      &:nth-child(n+2) {
+        margin-left: 20px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        flex-basis: calc((100% - 40px) * 3 / 11);
+      }
+    }
+  }
+}
