@@ -1,0 +1,5 @@
+@use "../../mixins";
+
+.s-svg-icon {
+  @include mixins.elementvisibility-visuallyHidden;
+}

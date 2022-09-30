@@ -35,13 +35,13 @@ const config = {
     filename: buildDir === 'dev' ? 'scripts/[name].js' : 'scripts/[name].[contenthash].js',
     path: path.resolve(__dirname, buildDir)
   },
-  // optimization: {
-  //   minimizer: [
-  //     new CssMinimizerPlugin({
-  //       parallel: true
-  //     })
-  //   ],
-  // },
+  optimization: {
+    minimizer: [
+      new CssMinimizerPlugin({
+        parallel: true
+      })
+    ],
+  },
   module: {
     rules: [
       {
@@ -104,14 +104,17 @@ const config = {
     new MiniCssExtractPlugin({
       filename: buildDir === 'dev' ? 'styles/[name].css' : 'styles/[name].[contenthash].css'
     }),
-    // new CssMinimizerPlugin(),
+    new CssMinimizerPlugin(),
     new StylelintPlugin(),
     new HtmlWebpackPlugin({
       template: 'components/_preview-layouts/_preview-template.html',
       filename: path.resolve(__dirname, 'src') + '/components/_preview-layouts/_preview.html'
     }),
     new SpriteLoaderPlugin({
-      plainSprite: true
+      plainSprite: true,
+      spriteAttrs: {
+        class: 's-svg-icon'
+      }
     })
   ]
 };

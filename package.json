@@ -7,7 +7,8 @@
     "@frctl/nunjucks": "^2.0.14",
     "browser-cookies": "^1.2.0",
     "clamp-js": "^0.7.0",
-    "openseadragon": "^3.1.0"
+    "openseadragon": "^3.1.0",
+    "vanilla-lazyload": "^17.8.3"
   },
   "scripts": {
     "start": "NODE_ENV=development concurrently 'node ./fractal-server.js' 'npm run build-dev:webpack'",
