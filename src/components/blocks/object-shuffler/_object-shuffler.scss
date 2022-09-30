@@ -185,7 +185,7 @@
     display: flex;
     height: 60px;
     margin-bottom: 15px;
-    transition: transform 0.3s ease-out !important;
+    transition: transform 0.3s ease-out !important; /* stylelint-disable-line declaration-no-important */
     width: 60px;
 
     &:hover,

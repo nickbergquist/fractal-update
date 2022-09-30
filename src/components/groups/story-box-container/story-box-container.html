@@ -1,0 +1,34 @@
+<div class="b-story-box-container" style="width: 616px;">
+  <div class="b-story-box-container__story-boxes">
+    {% for story in stories %}
+       {% if loop.index % 2 == 0 %}
+        <div class="b-story-box-container__col-break"></div>
+       {% else %}
+        <div class="b-story-box-container__row-break"></div>
+       {% endif %}
+     {% if loop.index == (stories | length) %}
+      {% if (stories | length) % 2 == 0 %}
+        {% render "@story-box", { modifier: "column", story: story } %}
+      {% else %}
+        {% render "@story-box", { modifier: "row", story: story } %}
+      {% endif %}
+     {% else %}
+       {% render "@story-box", { modifier: "column", story: story } %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="b-story-box-container__reveal-container b-story-box-container__reveal-container--active" style="text-align: center;">
+      <button href="#" aria-label="show more stories" class="b-story-box-container__reveal-btn">
+        <div class="b-icon-badge">
+          <div class="b-icon-badge__icon s-themed s-themed--background-color s-themed--background-color--hover">
+            <svg aria-hidden="true" role="img">
+              <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#plus"></use>
+            </svg>
+          </div>
+          <small class="b-icon-badge__label">
+            Show more
+          </small>
+        </div>
+      </button>
+    </div>
+</div>

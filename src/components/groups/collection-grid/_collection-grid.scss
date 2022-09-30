@@ -1,0 +1,21 @@
+@use "../../mixins";
+
+.b-collection-grid {
+  &__items {
+    @include mixins.unstyledelements-unstyledList;
+    @include mixins.tiles-tiles;
+  }
+
+  &__item {
+    @include mixins.tiles-tilesItem(3);
+
+    &--featured {
+      @include mixins.tiles-tilesItem(4);
+    }
+  }
+
+  &__3after4 {
+    margin: auto;
+    max-width: 950px;
+  }
+}

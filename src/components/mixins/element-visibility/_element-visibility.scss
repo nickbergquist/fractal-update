@@ -1,3 +1,4 @@
+/* stylelint-disable declaration-no-important */
 @mixin visuallyHidden {
   border: none !important;
   clip: rect(0 0 0 0) !important;
@@ -12,3 +13,4 @@
 @mixin hidden-all {
   display: none !important;
 }
+/* stylelint-enable declaration-no-important */

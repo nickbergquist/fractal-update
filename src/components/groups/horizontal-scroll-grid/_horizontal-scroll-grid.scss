@@ -1,0 +1,24 @@
+.b-horizontal-scroll-grid {
+  margin: auto;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__content {
+    align-content: stretch;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    &--noflex {
+      display: inline-flex;
+    }
+
+    .cssscrollbar & {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+}

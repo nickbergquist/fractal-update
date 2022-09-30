@@ -1,0 +1,44 @@
+<div class="b-image-overlay-detail">
+  <div class="b-image-overlay-detail__caption-container">
+    <div class="b-image-overlay-detail__navigation-container">
+      <button class="b-image-carousel__prev b-image-carousel__prev--mobile" disabled="true" title="Previous" aria-label="Previous image">
+        <svg aria-hidden="true" role="presentation">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-left"></use>
+        </svg>
+      </button>
+      <button class="b-image-carousel__next b-image-carousel__next--mobile" disabled="true" title="Next" aria-label="Next image">
+        <svg aria-hidden="true" role="presentation">
+          <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#point-right"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="b-image-overlay-detail__image-counter">
+      Image <span class="b-image-overlay-detail__current-image"></span> of <span class="b-image-overlay-detail__total-number-of-images"></span>
+    </div>
+    <div class="b-image-overlay-detail__copyright-holder">
+      © Victoria and Albert Museum, London
+    </div>
+    {%- render "@image-overlay-license-modal" -%}
+  </div>
+  <div class="b-image-overlay-detail__carousel-container">
+    {% if not more_than_five_images %}
+    {%- render "@image-carousel" -%}
+    {% endif %}
+    {% if more_than_five_images %}
+    {%- render "@image-carousel--more-than-five-images" -%}
+    {% endif %}
+  </div>
+  <div class="b-image-overlay-detail__zoom-btns">
+    <button class="b-image-overlay-detail__zoom-in b-image-overlay-detail__zoom-in--enabled" id="js-image-overlay__zoomin" title="Zoom in">
+      <svg role="presentation" aria-hidden="true">
+        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#plus"></use>
+      </svg>
+    </button>
+    <button class="b-image-overlay-detail__zoom-out b-image-overlay-detail__zoom-out--enabled" id="js-image-overlay__zoomout" title="Zoom out">
+      <svg role="presentation" aria-hidden="true">
+        <use xlink:href="../../{{ _config.project.buildDir }}/svg/vam-sprite.svg#minus"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="b-image-overlay-detail__zoomnavigator" id="js-image-overlay__zoomnavigator"></div>
+</div>

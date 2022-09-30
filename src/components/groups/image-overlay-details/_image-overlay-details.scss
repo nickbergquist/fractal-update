@@ -1,0 +1,122 @@
+@use "../../mixins";
+@use "../../base";
+
+.b-image-overlay-detail {
+  align-items: center;
+  background: base.sitecolors-siteColor("vam-black");
+  color: base.sitecolors-siteColor("vam-white");
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  width: 100%;
+
+  @include mixins.breakpoints-bpMinMedium {
+    padding: 22px 30px 24px;
+  }
+
+  &__navigation-container {
+    margin-bottom: 10px;
+
+    @include mixins.breakpoints-bpMinMedium {
+      display: none;
+    }
+  }
+
+  &__caption {
+    flex: 0 1 auto;
+  }
+
+  &__image-counter {
+    @include base.typography-typeSetting(3, "bold");
+  }
+
+  &__copyright-holder {
+    @include base.typography-typeSetting(0, "light");
+
+    line-height: 22px;
+  }
+
+  &__download-button-container {
+    margin-top: 4px;
+  }
+
+  &__caption-container {
+    align-self: flex-start;
+    flex: 1 0 auto;
+    text-align: left;
+
+    @include mixins.breakpoints-bpMinMedium {
+      max-width: 371px;
+    }
+  }
+
+  &__carousel-container {
+    display: none;
+
+    @include mixins.breakpoints-bpMinMedium {
+      display: block;
+      left: 50%;
+      margin: 33px 0 24px;
+      position: absolute;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  &__zoom-btns {
+    left: 20px;
+    position: absolute;
+    top: 20px;
+
+    @include mixins.breakpoints-bpMinMedium {
+      left: auto;
+      margin: 0 20px 0 auto;
+      position: relative;
+      top: auto;
+    }
+  }
+
+  &__zoom-in,
+  &__zoom-out {
+    background: #fff;
+    border-radius: 50%;
+    color: base.sitecolors-siteColor("vam-black");
+    cursor: default;
+    display: flex !important; /* stylelint-disable-line declaration-no-important */
+    height: 32px;
+    opacity: 0.4;
+    width: 32px;
+
+    > svg {
+      height: 14px;
+      margin: auto;
+      width: 14px;
+    }
+
+    &--enabled {
+      cursor: pointer;
+      opacity: 1;
+
+      &:hover,
+      &:focus {
+        background: base.sitecolors-siteColor("vam-grey-5");
+      }
+    }
+  }
+
+  &__zoom-out {
+    margin-top: 18px;
+  }
+
+  &__zoomnavigator {
+    display: none !important; /* stylelint-disable-line declaration-no-important */
+
+    @include mixins.breakpoints-bpMinMedium {
+      /* stylelint-disable-next-line declaration-no-important */
+      border: 1px solid base.sitecolors-siteColor("vam-grey-7") !important;
+      display: block !important; /* stylelint-disable-line declaration-no-important */
+      height: 104px;
+      width: 156px;
+    }
+  }
+}

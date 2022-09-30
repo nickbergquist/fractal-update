@@ -57,7 +57,20 @@
 @use "../../components/blocks/beta-tag/beta-tag";
 @use "../../components/blocks/venue-blog-card/venue-blog-card";
 @use "../../components/blocks/venue-core-info/venue-core-info";
+@use "../../components/blocks/venue-social-media/venue-social-media";
+@use "../../components/blocks/venue-visit-info/venue-visit-info";
+@use "../../components/blocks/venue-visit-lead/venue-visit-lead";
 
 // Groups
 @use "../../components/groups/block-grid/block-grid";
+@use "../../components/groups/collection-grid/collection-grid";
+@use "../../components/groups/horizontal-scroll-grid/horizontal-scroll-grid";
+@use "../../components/groups/holding-page/holding-page";
+@use "../../components/groups/image-overlay/image-overlay";
+@use "../../components/groups/image-overlay-details/image-overlay-details";
+@use "../../components/groups/object-grid/object-grid";
+@use "../../components/groups/search-results-page/search-results-page";
+@use "../../components/groups/search-page/search-page";
+@use "../../components/groups/search-box-container/search-box-container";
+@use "../../components/groups/story-box-container/story-box-container";
 @use "../../components/groups/facet-box-modal/facet-box-modal";
