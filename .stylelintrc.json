@@ -6,6 +6,10 @@
       "font-family-name-quotes": "always-unless-keyword",
       "string-no-newline": null,
       "color-function-notation": "legacy",
+      "declaration-no-important": [true, {
+          "severity": "warning"
+        }
+      ],
       "function-name-case": [
           "lower", {
           "ignoreFunctions": ["/siteColor/", "/themeColor/", "/fontSize/", "/fontFamily/", "/fontWeight/"]
