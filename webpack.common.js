@@ -4,6 +4,7 @@ const path = require('path');
 
 // Process script files
 const ESLintPlugin = require('eslint-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 // Extract and process CSS chunks
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -36,10 +37,20 @@ const config = {
     path: path.resolve(__dirname, buildDir)
   },
   optimization: {
+    minimize: true,
     minimizer: [
       new CssMinimizerPlugin({
         parallel: true
-      })
+      }),
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+          parallel: true,
+        },
+        extractComments: false,
+      }),
     ],
   },
   module: {
