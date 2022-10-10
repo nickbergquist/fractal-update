@@ -12,7 +12,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
 
 // Process CSS files
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 // Process HTML templates 
@@ -38,11 +37,7 @@ const config = {
     path: path.resolve(__dirname, buildDir)
   },
   optimization: {
-    minimize: true,
     minimizer: [
-      new CssMinimizerPlugin({
-        parallel: true
-      }),
       new TerserPlugin({
         terserOptions: {
           format: {
@@ -81,10 +76,7 @@ const config = {
         test: /\.html$/i,
         use: [
           {
-            loader: 'html-loader',
-            options: {
-              minimize: true
-            }
+            loader: 'html-loader'
           }
         ]
       },
@@ -116,7 +108,6 @@ const config = {
     new MiniCssExtractPlugin({
       filename: buildDir === 'dev' ? 'styles/[name].css' : 'styles/[name].[contenthash].css'
     }),
-    new CssMinimizerPlugin(),
     new StylelintPlugin(),
     new HtmlWebpackPlugin({
       template: 'components/_preview-layouts/_preview-template.html',

@@ -13,16 +13,16 @@
   },
   "scripts": {
     "dev": "NODE_ENV=development concurrently 'node ./fractal-server.js' 'npm run build-dev:webpack'",
-    "build": "NODE_ENV=production 'npm run build-prod:webpack' 'npm run build:fractal'",
+    "build": "NODE_ENV=production npm run build-prod:webpack && npm run build:fractal",
     "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
-    "build:fractal": "fractal build"
+    "build:fractal": "fractal build",
+    "build:surge": "surge -p ./www/ vam-design-guide.surge.sh"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
     "concurrently": "^7.3.0",
     "css-loader": "^6.7.1",
-    "css-minimizer-webpack-plugin": "^4.0.0",
     "eslint": "^8.23.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
