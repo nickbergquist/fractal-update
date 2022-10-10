@@ -5,6 +5,7 @@ const path = require('path');
 // Process script files
 const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 // Extract and process CSS chunks
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -28,7 +29,7 @@ const config = {
   mode: process.env.NODE_ENV,
   context: path.resolve(__dirname, 'src'),
   entry: {
-    fractal: './assets-fractal.js',
+    fractal: './assets/styles/fractal-preview.scss',
     vanda: './assets-vanda.js'
   },
   output: {
@@ -46,8 +47,7 @@ const config = {
         terserOptions: {
           format: {
             comments: false,
-          },
-          parallel: true,
+          }
         },
         extractComments: false,
       }),
@@ -111,6 +111,7 @@ const config = {
     ]
   },
   plugins: [
+    new RemoveEmptyScriptsPlugin(),
     new ESLintPlugin(),
     new MiniCssExtractPlugin({
       filename: buildDir === 'dev' ? 'styles/[name].css' : 'styles/[name].[contenthash].css'

@@ -1,8 +1,13 @@
 'use strict';
 
 const paths = {
-  dist: `${__dirname}/dist`, // surge
-  static: `${__dirname}/dev`, // local development
+  // HTML build destination : Fractal 'builder' deployment for Surge publication
+  pub: `${__dirname}/www`,
+  // local development build destination : Fractal 'static' deployment
+  static: `${__dirname}/dev`,
+  // build files copy destination
+  dist: `${__dirname}/dist`,
+  // local source files
   src: `${__dirname}/src`,
   components: `${__dirname}/src/components`,
   docs: `${__dirname}/src/docs`
@@ -36,7 +41,7 @@ fractal.web.set('static.path', paths.static);
 fractal.web.set('static.mount', 'dev');
 
 // Distribution environment
-fractal.web.set('builder.dest', paths.dist);
+fractal.web.set('builder.dest', paths.pub);
 fractal.web.set('builder.urls.ext', null);
 
 // Templating config.
