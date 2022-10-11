@@ -53,7 +53,7 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader'
           }, 
@@ -97,6 +97,9 @@ const config = {
               spriteFilename: 'svg/vam-sprite.svg',
               esModule: false
             }
+          },
+          {
+            loader: 'svgo-loader'
           }
         ]
       }
