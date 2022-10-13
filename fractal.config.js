@@ -5,15 +5,13 @@ const paths = {
   pub: `${__dirname}/www`,
   // local development build destination : Fractal 'static' deployment
   static: `${__dirname}/dev`,
-  // build files copy destination
-  dist: `${__dirname}/dist`,
   // local source files
   src: `${__dirname}/src`,
   components: `${__dirname}/src/components`,
   docs: `${__dirname}/src/docs`
 };
 
-const buildDir = process.env.NODE_ENV === 'production' ? 'dist' : 'dev';
+const buildDir = 'dev';
 
 // Required modules
 const fractal = module.exports = require('@frctl/fractal').create();

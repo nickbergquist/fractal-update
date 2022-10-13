@@ -12,12 +12,12 @@
     "vanilla-lazyload": "^17.8.3"
   },
   "scripts": {
-    "dev": "NODE_ENV=development concurrently 'node ./fractal-server.js' 'npm run build-dev:webpack'",
-    "build": "NODE_ENV=production npm run build-prod:webpack && npm run build:fractal",
+    "dev": "NODE_ENV=development concurrently 'node ./fractal-server' 'npm run build-dev:webpack'",
+    "build": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder",
+    "pub": "NODE_ENV=production npm run build-prod:webpack && node ./fractal-builder && npm run pub-prod:surge",
     "build-dev:webpack": "webpack --config ./webpack.dev.js --watch",
     "build-prod:webpack": "webpack --config ./webpack.prod.js",
-    "build:fractal": "fractal build",
-    "build:surge": "surge -p ./www/ vam-design-guide.surge.sh"
+    "pub-prod:surge": "surge --project www --domain vam-design-guide.surge.sh"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",

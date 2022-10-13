@@ -20,9 +20,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Process SVG files
 const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
-// Set environment switch
-const buildDir = process.env.NODE_ENV === 'production' ? 'dist' : 'dev';
-
 // Default configuration
 const config = {
   mode: process.env.NODE_ENV,
@@ -33,8 +30,9 @@ const config = {
   },
   output: {
     clean: true,
-    filename: buildDir === 'dev' ? 'scripts/[name].js' : 'scripts/[name].[contenthash].js',
-    path: path.resolve(__dirname, buildDir)
+    // filename: 'scripts/[name].[contenthash].js',
+    filename: process.env.NODE_ENV === 'production' ? 'scripts/[name].[contenthash].js' : 'scripts/[name].js',
+    path: path.resolve(__dirname, 'dev')
   },
   optimization: {
     minimizer: [
@@ -109,7 +107,8 @@ const config = {
     new RemoveEmptyScriptsPlugin(),
     new ESLintPlugin(),
     new MiniCssExtractPlugin({
-      filename: buildDir === 'dev' ? 'styles/[name].css' : 'styles/[name].[contenthash].css'
+      // filename: 'styles/[name].[contenthash].css'
+      filename: process.env.NODE_ENV === 'production' ? 'styles/[name].[contenthash].css' : 'styles/[name].css'
     }),
     new StylelintPlugin(),
     new HtmlWebpackPlugin({
