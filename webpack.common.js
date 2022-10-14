@@ -30,7 +30,6 @@ const config = {
   },
   output: {
     clean: true,
-    // filename: 'scripts/[name].[contenthash].js',
     filename: process.env.NODE_ENV === 'production' ? 'scripts/[name].[contenthash].js' : 'scripts/[name].js',
     path: path.resolve(__dirname, 'dev')
   },
@@ -107,7 +106,6 @@ const config = {
     new RemoveEmptyScriptsPlugin(),
     new ESLintPlugin(),
     new MiniCssExtractPlugin({
-      // filename: 'styles/[name].[contenthash].css'
       filename: process.env.NODE_ENV === 'production' ? 'styles/[name].[contenthash].css' : 'styles/[name].css'
     }),
     new StylelintPlugin(),

@@ -1,7 +1,13 @@
 {
-  "name": "vam-fractal-library",
+  "name": "vam-fractal",
   "version": "2.0.0",
   "description": "Visual Style Guide for V&A websites",
+  "homepage": "https://vam-design-guide.surge.sh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanda/vam-fractal.git"
+  },
+  "bugs": "https://github.com/vanda/vam-fractal/issues",
   "dependencies": {
     "@frctl/fractal": "^1.5.14",
     "@frctl/nunjucks": "^2.0.14",
