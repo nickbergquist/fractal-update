@@ -31,7 +31,7 @@ fractal.docs.set('ext', '.md');
 fractal.docs.set('path', paths.docs);
 
 // Web UI config.
-fractal.web.set('server.port', 3001);
+fractal.web.set('server.port', 3302);
 fractal.web.set('server.sync', true);
 
 // Local development environment
